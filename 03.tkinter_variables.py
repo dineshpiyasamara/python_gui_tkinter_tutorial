@@ -5,20 +5,19 @@ root = tk.Tk()
 root.title('Variables')
 root.geometry('300x200')
 
-# create a string variable
-string_var = tk.StringVar() # int, double, boolean
- 
-def button_click_func():
-    label.configure(text=string_var.get())
-    button.configure(state='disabled')
+variable_value = tk.StringVar(value="hello")
 
-entry = ttk.Entry(root, textvariable=string_var)
+def click_func():
+    # print(entry.get())
+    print(variable_value.get())
+
+label = ttk.Label(root, textvariable=variable_value)
+label.pack()
+
+entry = ttk.Entry(root, textvariable=variable_value)
 entry.pack()
 
-button = ttk.Button(root, text='Click Me', command=button_click_func)
+button = ttk.Button(root, text="Click Me", command=lambda:click_func())
 button.pack()
-
-label = ttk.Label(root)
-label.pack()
 
 root.mainloop()
